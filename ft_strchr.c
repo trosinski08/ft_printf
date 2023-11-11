@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hexa_up.c                                    :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 02:01:21 by trosinsk          #+#    #+#             */
-/*   Updated: 2023/10/20 00:42:55 by trosinsk         ###   ########.fr       */
+/*   Created: 2023/11/09 20:30:39 by trosinsk          #+#    #+#             */
+/*   Updated: 2023/11/09 21:40:54 by trosinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned long	print_hexa_up(unsigned long nbr, unsigned int base)
+char	*ft_strchr(const char *s, int c)
 {
-	int		i;
-	char	*upp_base;
+	int	i;
 
 	i = 0;
-	upp_base = "0123456789ABCDEF";
-	if (nbr < base)
-		return (print_char(upp_base[nbr]));
-	else
+	while (s[i] != '\0')
 	{
-		i += print_hexa_up(nbr / base, base);
-		if (i == -1)
-			return (-1);
-		return (i + print_hexa_up(nbr % base, base));
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i++;
 	}
-	return (i);
+	if ((char)c == '\0' && s[i] == '\0')
+		return ((char *)&s[i]);
+	return (NULL);
 }

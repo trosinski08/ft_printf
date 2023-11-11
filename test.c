@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 03:56:48 by trosinsk          #+#    #+#             */
-/*   Updated: 2023/11/08 20:02:47 by trosinsk         ###   ########.fr       */
+/*   Created: 2023/11/11 17:25:45 by trosinsk          #+#    #+#             */
+/*   Updated: 2023/11/11 17:41:39 by trosinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
-int	print_char(int c)
+int	main(void)
 {
-	int	i;
+	int	p1;
+	int	p2;
 
-	i = write(1, &c, 1);
-	return (i);
+	p1 = ft_printf("%-1c", '0');
+	printf("\n%d\n", p1);
+	p2 = printf("%-1c", '0');
+	printf("\n%d\n", p2);
+
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/10 01:54:44 by trosinsk          #+#    #+#              #
-#    Updated: 2023/10/20 04:05:39 by trosinsk         ###   ########.fr        #
+#    Updated: 2023/11/11 17:21:57 by trosinsk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,25 +20,25 @@ FLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
 
 #LISTA PLIKOW ZRODLOWYCH
-SRCS = ft_printf.c print_char.c print_digit.c print_hexa_up.c \
-	print_digit.c print_pointer.c print_string.c print_hexa.c
-
-BONUS = flag_spec.c
-
+SRCS = ft_printf.c print_char.c print_digit.c print_h_up.c \
+	print_hexa.c print_point.c print_string.c ft_strchr.c
+	
+BNS = flag_spec.c
+	
 #PLIKI OBIEKTOWE
 OBJS = $(SRCS:.c=.o)
-OBONUS = $(BONUS:.c=.o)
+OBJSB = $(BNS:.c=.o)
 
 #ALL RULE
 
 all: $(NAME)
 
 #RULE DO ZROBIENIA BIBLIOTEKI
-$(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
-
-bonus:$(OBONUS)
-	ar rcs $(NAME) $(OBONUS)
+$(NAME): $(OBJS) $(OBJSB)
+	ar rcs $(NAME) $(OBJS) $(OBJSB)
+	
+bonus: $(NAME) $(OBJSB)
+	ar rcs $(NAME) $(OBJSB)
 
 #RULE DO STWORZENIA PLIKOW OBIEKTOWYCH
 %.o: %.c
@@ -46,7 +46,7 @@ bonus:$(OBONUS)
 
 clean:
 	rm -f $(OBJS)
-	rm -f $(BONUS)
+	rm -f $(OBJSB)
 
 #RULE DO CZYSZCZENIA WSZYSTKIEGO
 fclean: clean

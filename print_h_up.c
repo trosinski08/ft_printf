@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_pointer.c                                    :+:      :+:    :+:   */
+/*   print_h_up.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 06:16:22 by trosinsk          #+#    #+#             */
-/*   Updated: 2023/10/20 00:43:06 by trosinsk         ###   ########.fr       */
+/*   Created: 2023/10/17 02:01:21 by trosinsk          #+#    #+#             */
+/*   Updated: 2023/11/10 13:08:44 by trosinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned long	print_pointer(unsigned long nbr, unsigned int base)
+unsigned long	print_h_up(unsigned long nbr, unsigned int base, t_format *f)
 {
 	int		i;
-	char	*low_base;
+	char	*upp_base;
 
 	i = 0;
-	i += print_char('0');
-	if (i == -1)
+	if (f ->hash == 1 && nbr != 0)
 	{
-		return (-1);
+		write(1, "0X", 2);
+		f->hash = 0;
+		i = 2;
+		return (i + print_h_up(nbr, base, f));
 	}
-	i += print_char('x');
-	low_base = "0123456789abcdef";
+	upp_base = "0123456789ABCDEF";
 	if (nbr < base)
-	{
-		return (i + print_char(low_base[nbr]));
-	}
+		return (print_char(upp_base[nbr]));
 	else
 	{
-		i += print_hexa(nbr / base, base);
+		i += print_h_up(nbr / base, base, f);
 		if (i == -1)
 			return (-1);
-		return (i + print_hexa(nbr % base, base));
+		return (i + print_h_up(nbr % base, base, f));
 	}
 	return (i);
 }
