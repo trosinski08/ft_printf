@@ -61,7 +61,6 @@ int	ft_printf(const char *format, ...)
 			my_format = (t_format){0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		}
 		else
-			// count += ft_putchar_fd(*format, 1);
 			count += ft_putchar(*format);
 		++format;
 	}

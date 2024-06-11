@@ -20,7 +20,7 @@ FLAGS = -Wall -Wextra -Werror
 NAME := libftprintf.a
 LIBFT := ./libft
 INCLUDE := -I./include
-LIBFT_INCLUDE := -I./libft/include
+LIBFT_INCLUDE := -I./include -I./libft/include
 LIBFT_LIB := -L $(LIBFT) -libft.a
 #LISTA PLIKOW ZRODLOWYCH
 SRCS = ./mandatory/ft_printf.c  \
@@ -29,9 +29,9 @@ SRCS = ./mandatory/ft_printf.c  \
 		./mandatory/print_hexa.c \
 		./mandatory/print_point.c \
 		./mandatory/print_string.c \
-		ft_putchar.c ft_strchr.c ft_strlen.c 
-		# ./mandatory/flag_spec.c \
-		# ./mandatory/print_char.c \
+		./mandatory/ft_putchar.c \
+		ft_strchr.c ft_strlen.c
+
 	
 BNS = ./mandatory/flag_spec.c \
 		./mandatory/print_char.c
@@ -47,24 +47,25 @@ all: $(NAME)
 #RULE DO ZROBIENIA BIBLIOTEKI
 $(NAME): $(OBJS) $(OBJSB)
 	make -C $(LIBFT)
-	ar rcs $(NAME) $(OBJS) $(OBJSB) ./libft/libft.a
+	ar rcs $(NAME) $(OBJS) $(OBJSB) 
+	ar rcs $(NAME) $(LIBFT)/libft.a
 	
 bonus: $(NAME) $(OBJSB)
 	ar rcs $(NAME) $(OBJSB)
+	ar rcs $(NAME) $(LIBFT)/libft.a
 
 #RULE DO STWORZENIA PLIKOW OBIEKTOWYCH
 %.o: %.c
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
-	rm -f $(OBJSB)
-	make -C $(LIBFT) clean
+	rm -f $(OBJS) $(OBJSB)
+	$(MAKE) -C $(LIBFT) clean
 
 #RULE DO CZYSZCZENIA WSZYSTKIEGO
 fclean: clean
 	rm -f $(NAME)
-	make -C $(LIBFT) fclean
+	$(MAKE) -C $(LIBFT) fclean
 
 #RULE DO REKOMIPLACJI
 re: fclean all

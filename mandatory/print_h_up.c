@@ -27,7 +27,6 @@ unsigned long	print_h_up(unsigned long nbr, unsigned int base, t_format *f)
 	}
 	upp_base = "0123456789ABCDEF";
 	if (nbr < base)
-		// return (ft_putchar_fd(upp_base[nbr], 1));
 		return (ft_putchar(upp_base[nbr]));
 	else
 	{

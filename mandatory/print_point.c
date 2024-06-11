@@ -36,7 +36,6 @@ unsigned long	print_h(unsigned long nbr, unsigned int base, t_format *f)
 	i = 0;
 	low_base = "0123456789abcdef";
 	if (nbr < base)
-		// i += ft_putchar_fd(low_base[nbr], 1);
 		i += ft_putchar(low_base[nbr]);
 		
 	else
@@ -57,15 +56,10 @@ unsigned long	print_point(unsigned long nbr, unsigned int base, t_format *f)
 	i = 0;
 	if (f->width > i && f->minus == 0)
 		i += (min_conv(nbr, f));
-	// i += ft_putchar_fd('0', 1);
-		i += ft_putchar('0');
-	if (i == -1)
-		return (-1);
-	// i += ft_putchar_fd('x', 1);
-		i += ft_putchar('x');
+	i += ft_putchar('0');
+	i += ft_putchar('x');
 	low_base = "0123456789abcdef";
 	if (nbr < base)
-		// i += ft_putchar_fd(low_base[nbr], 1);
 		i += ft_putchar(low_base[nbr]);
 	else
 	{

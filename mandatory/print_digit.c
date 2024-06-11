@@ -88,7 +88,6 @@ int	print_digit(long nbr, int base, t_format *f)
 	else if (f ->space == 1 && nbr >= 0 && f->minus == 0)
 		i += space_conv(nbr, base, f);
 	else if (nbr < base)
-		// i += ft_putchar_fd(low_base[nbr], 1);
 		i += ft_putchar(low_base[nbr]);		
 	else
 	{

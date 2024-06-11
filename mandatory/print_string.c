@@ -24,12 +24,13 @@ int	dot_menager(t_format *f, char *str, int len)
 	j = 0;
 	if (str[0] == '\0')
 		len = 0;
-	 len = f->prec;
+	if (f->prec > 0 && f->prec < len)
+		len = f->prec;
 	if (f->width > len)
 		d = f->width - len;
 	while (i < d)
 		i += write(1, " ", 1);
-	while (d + j < len)
+	while (j < len)
 	{
 		i += ft_putchar(str[j]);
 		if (i == -1)
@@ -37,8 +38,6 @@ int	dot_menager(t_format *f, char *str, int len)
 		j++;
 		f ->type = 0;
 	}
-	while (i < f->width)
-		i += write(1, " ", 1);
 	return (i);
 }
 

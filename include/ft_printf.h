@@ -46,10 +46,10 @@ unsigned long	print_point(unsigned long nbr, unsigned int base, t_format *f);
 unsigned long	print_hexa(unsigned long nbr, unsigned int base, t_format *f);
 int				print_string(char *str, t_format *f);
 void			flag_spec(char fspec, t_format *flags);
-// int				ft_atoi(char *num);
-// char			*ft_strjoin(char *s1, char *s2);
 size_t			ft_strlen(const char *str);
 int				ft_putchar(char c);
 char			*ft_strchr(const char *s, int c);
 
 #endif
+// int				ft_atoi(char *num);
+// char			*ft_strjoin(char *s1, char *s2);
