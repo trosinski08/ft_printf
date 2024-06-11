@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tomek <tomek@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:02:40 by trosinsk          #+#    #+#             */
-/*   Updated: 2024/06/10 00:08:37 by trosinsk         ###   ########.fr       */
+/*   Updated: 2024/06/11 13:02:17 by tomek            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,5 @@ int	ft_printf(const char *format, ...)
 			count += ft_putchar(*format);
 		++format;
 	}
-	va_end(ap);
-	return (count);
+	return (va_end(ap), count);
 }

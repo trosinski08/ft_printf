@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tomek <tomek@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 00:22:01 by trosinsk          #+#    #+#             */
-/*   Updated: 2024/06/09 22:11:02 by trosinsk         ###   ########.fr       */
+/*   Updated: 2024/06/11 12:26:42 by tomek            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define FLAG_LIST "-0.# +123456789"
 # define SPEC_LIST "cspdiuxX%"
 
-# include "../libft/include/libft.h"
+// # include "../libft/include/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>

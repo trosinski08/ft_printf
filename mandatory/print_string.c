@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   print_string.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tomek <tomek@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 03:51:09 by trosinsk          #+#    #+#             */
-/*   Updated: 2024/06/11 00:16:01 by trosinsk         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:12:08 by tomek            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-//first are printed spaces, then amount of chars declared by precision, summed to width
 int	dot_menager(t_format *f, char *str, int len)
 {
 	int	i;
-	int j;
+	int	j;
 	int	d;
 
 	i = 0;
@@ -104,6 +103,12 @@ int	print_string(char *str, t_format *f)
 	int	d;
 	int	len;
 
+	// printf("\nf->prec: %d\n", f->prec);
+	// printf("f->width: %d\n", f->width);
+	// printf("f->minus: %d\n", f->minus);
+	// printf("f->dot: %d\n", f->dot);
+	// printf("f->type: %c\n", f->type);
+	// printf("f->zero: %d\n", f->zero);
 	i = 0;
 	d = f->width;
 	if (!str)

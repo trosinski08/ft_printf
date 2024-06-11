@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flag_spec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tomek <tomek@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 03:32:30 by trosinsk          #+#    #+#             */
-/*   Updated: 2024/06/10 00:14:32 by trosinsk         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:07:09 by tomek            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,26 @@
 
 void	flag_spec(char fspec, t_format *flags)
 {
+	// printf("\nf->prec: %d\n", flags->prec);
+	// printf("f->width: %d\n", flags->width);
+	// printf("f->minus: %d\n", flags->minus);
+	// printf("f->dot: %d\n", flags->dot);
+	// printf("f->type: %c\n", flags->type);
+	// printf("f->zero: %d\n", flags->zero);
+	// printf("\n\t%c\n", fspec);
 	if (ft_strchr("0123456789", fspec) && flags -> zero == 0)
+	{
 		flags->type = flags->type * 10 + (fspec - '0');
-	if (flags->dot == 0)
-		flags->width = flags->type;
-	else
-		flags->prec = flags->type;
-	if (fspec == '-')
+		if (flags->dot == 0)
+			flags->width = flags->type;
+		else
+			flags->prec = flags->type;
+	}
+	else if (fspec == '-')
 		flags->minus = 1;
 	else if (fspec == '.')
 	{
 		flags->dot = 1;
-		// flags->prec = ft_atoi(&fspec + 1);
 		flags->type = 0;
 	}
 	else if (fspec == '0' && flags ->type == 0)
