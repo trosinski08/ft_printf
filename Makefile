@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tomek <tomek@student.42.fr>                +#+  +:+       +#+         #
+#    By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/10 01:54:44 by trosinsk          #+#    #+#              #
-#    Updated: 2024/06/11 13:16:28 by tomek            ###   ########.fr        #
+#    Updated: 2024/06/11 23:13:43 by trosinsk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS = ./mandatory/ft_printf.c  \
 		./mandatory/print_point.c \
 		./mandatory/print_string.c \
 		./mandatory/ft_putchar.c \
+		./mandatory/put_nbr_base.c \
 		ft_strchr.c ft_strlen.c
 
 	

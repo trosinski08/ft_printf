@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomek <tomek@student.42.fr>                +#+  +:+       +#+        */
+/*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 00:22:01 by trosinsk          #+#    #+#             */
-/*   Updated: 2024/06/11 12:26:42 by tomek            ###   ########.fr       */
+/*   Updated: 2024/06/12 03:03:45 by trosinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_format
 int				ft_printf(const char *str, ...);
 int				print_char(int c, t_format *f);
 unsigned long	print_h_up(unsigned long nbr, unsigned int base, t_format *f);
-int				print_digit(long nbr, int base, t_format *f);
+int				print_digit_prep(long nbr, int base, t_format *f);
 unsigned long	print_point(unsigned long nbr, unsigned int base, t_format *f);
 unsigned long	print_hexa(unsigned long nbr, unsigned int base, t_format *f);
 int				print_string(char *str, t_format *f);
@@ -49,7 +49,14 @@ void			flag_spec(char fspec, t_format *flags);
 size_t			ft_strlen(const char *str);
 int				ft_putchar(char c);
 char			*ft_strchr(const char *s, int c);
+int				ft_digit_len(long nbr, int base, t_format *f);
+int				print_digit(long nbr, int base);
+int				minus_nbr(long nbr, int base, t_format *f);
+int				plus_conv(long nbr, int base, t_format *f);
+int				zero_conv(long nbr, int base, t_format *f, int len);
+int				prec_conv(long nbr, int base, t_format *f, int len);
 
 #endif
 // int				ft_atoi(char *num);
+// int				min_conv(long nbr, int base, t_format *f, int len);
 // char			*ft_strjoin(char *s1, char *s2);

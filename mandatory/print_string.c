@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_string.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomek <tomek@student.42.fr>                +#+  +:+       +#+        */
+/*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 03:51:09 by trosinsk          #+#    #+#             */
-/*   Updated: 2024/06/11 14:12:08 by tomek            ###   ########.fr       */
+/*   Updated: 2024/06/12 02:32:24 by trosinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,18 @@ int	dot_menager(t_format *f, char *str, int len)
 	return (i);
 }
 
-int	minus_menager(int d, t_format *f, char *str, int len)
+int	minus_menager(t_format *f, char *str, int len)
 {
 	int	i;
+	int	d;
 
 	i = 0;
+	d = f->width;
+	if (f->prec > 0 && f->prec < len)
+		len = f->prec;
 	if (len > d)
 	{
-		while (str[i] != '\0')
+		while (str[i] != '\0' && i < len)
 		{
 			i += ft_putchar((int)str[i]);
 			if (i == -1)
@@ -64,11 +68,15 @@ int	minus_menager(int d, t_format *f, char *str, int len)
 	return (i);
 }
 
-int	d_menager(int d, t_format *f, char *str, int len)
+int	d_menager(t_format *f, char *str, int len)
 {
 	int	i;
+	int	d;
 
 	i = 0;
+	d = f->width;
+	if (f->prec > 0 && f->prec < len)
+		len = f->prec;
 	if (len >= d)
 	{
 		while (str[i] != '\0')
@@ -100,17 +108,9 @@ int	str_menager(char *str, int len, int i)
 int	print_string(char *str, t_format *f)
 {
 	int	i;
-	int	d;
 	int	len;
 
-	// printf("\nf->prec: %d\n", f->prec);
-	// printf("f->width: %d\n", f->width);
-	// printf("f->minus: %d\n", f->minus);
-	// printf("f->dot: %d\n", f->dot);
-	// printf("f->type: %c\n", f->type);
-	// printf("f->zero: %d\n", f->zero);
 	i = 0;
-	d = f->width;
 	if (!str)
 		str = "(null)";
 	len = ft_strlen(str);
@@ -118,18 +118,15 @@ int	print_string(char *str, t_format *f)
 		len = f->prec;
 	if (!str && f->space == 1)
 		return (-1);
-	else if (f->minus && d > 0)
-		i = minus_menager(d, f, str, len);
+	else if (f->minus && f->width > 0)
+		i = minus_menager(f, str, len);
 	else if (f->prec)
 		i = dot_menager(f, str, len);
-	else if (d > 0)
-		i = d_menager(d, f, str, len);
+	else if (f->width > 0)
+		i = d_menager(f, str, len);
 	else
 		i += str_menager(str, len, i);
 	f ->width = 0;
 	f ->type = 0;
 	return (i);
 }
-
-	// printf("\nprec: %d\n", f->prec);
-	// printf("width: %d\n", f->width);

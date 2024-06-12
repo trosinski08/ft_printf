@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomek <tomek@student.42.fr>                +#+  +:+       +#+        */
+/*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:02:40 by trosinsk          #+#    #+#             */
-/*   Updated: 2024/06/11 13:02:17 by tomek            ###   ########.fr       */
+/*   Updated: 2024/06/12 02:31:04 by trosinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static int	ft_formspecifier(char spec, va_list ap, t_format *flags)
 	else if (spec == 'p')
 		count += print_point(va_arg(ap, unsigned long), 16, flags);
 	else if (spec == 'd' || (spec == 'i'))
-		count += print_digit(va_arg(ap, int), 10, flags);
+		count += print_digit_prep(va_arg(ap, int), 10, flags);
 	else if (spec == 'u')
-		count += print_digit(va_arg(ap, unsigned int), 10, flags);
+		count += print_digit_prep(va_arg(ap, unsigned int), 10, flags);
 	else if (spec == 'x')
 		count += print_hexa(va_arg(ap, unsigned int), 16, flags);
 	else if (spec == 'X')
