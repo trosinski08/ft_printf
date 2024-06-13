@@ -6,7 +6,7 @@
 /*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 23:11:30 by trosinsk          #+#    #+#             */
-/*   Updated: 2024/06/12 03:03:55 by trosinsk         ###   ########.fr       */
+/*   Updated: 2024/06/13 01:10:16 by trosinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	plus_conv(long nbr, int base, t_format *f)
 	i += write(1, "+", 1);
 	if (i == -1)
 		return (-1);
-	f ->plus = 0;
 	return (i);
 }
 
@@ -87,6 +86,8 @@ int	prec_conv(long nbr, int base, t_format *f, int len)
 
 	i = 0;
 	if (nbr < 0)
+		len--;
+	if (f->plus == 1)
 		len--;
 	c = f ->prec - len;
 	f->prec = 0;

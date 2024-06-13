@@ -6,7 +6,7 @@
 /*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:02:40 by trosinsk          #+#    #+#             */
-/*   Updated: 2024/06/12 02:31:04 by trosinsk         ###   ########.fr       */
+/*   Updated: 2024/06/12 23:43:56 by trosinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	ft_formspecifier(char spec, va_list ap, t_format *flags)
 	else if (spec == 'X')
 		count += print_h_up(va_arg(ap, unsigned int), 16, flags);
 	else if (spec == '%')
-		count += write(1, &spec, 1);
+		count += print_char(spec, flags);
 	else
 		count += write(1, &spec, 1);
 	return (count);
