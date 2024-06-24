@@ -6,7 +6,7 @@
 /*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 00:22:01 by trosinsk          #+#    #+#             */
-/*   Updated: 2024/06/24 00:54:40 by trosinsk         ###   ########.fr       */
+/*   Updated: 2024/06/24 20:19:57 by trosinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,12 @@ int				minus_nbr(long nbr, int base, t_format *f);
 int				plus_conv(long nbr, int base, t_format *f);
 int				non_minus_conv(long nbr, t_format *f, int len, int base);
 // int				zero_conv(long nbr, int base, t_format *f, int len);
-int				prec_conv(long nbr, int base, t_format *f, int len);
+// int				prec_conv(long nbr, int base, t_format *f, int len);
 int				space_conv(long nbr, int base, t_format *f);
+int				zero_printer(int zero_len);
+int				flag_checker(long nbr, int base, t_format *f, char c);
+int				space_len_calc(t_format *f, int len, long nbr, char c);
+int				zero_len_calc(t_format *f, int len, long nbr);
+int				hash_conv(long nbr, t_format *f);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/10 01:54:44 by trosinsk          #+#    #+#              #
-#    Updated: 2024/06/11 23:13:43 by trosinsk         ###   ########.fr        #
+#    Updated: 2024/06/24 20:32:14 by trosinsk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,12 +28,14 @@ SRCS = ./mandatory/ft_printf.c  \
 		./mandatory/print_point.c \
 		./mandatory/print_string.c \
 		./mandatory/ft_putchar.c \
-		./mandatory/put_nbr_base.c \
-		ft_strchr.c ft_strlen.c
+		./mandatory/print_char.c \
+		./utils/digit_utils.c \
+		./utils/digit_utils2.c \
+		./utils/ft_strchr.c \
+		./utils/ft_strlen.c
 
 	
-BNS = ./mandatory/flag_spec.c \
-		./mandatory/print_char.c
+BNS = ./bonus/flag_spec.c \
 	
 #PLIKI OBIEKTOWE
 OBJS = $(SRCS:.c=.o)

@@ -6,11 +6,11 @@
 /*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:30:39 by trosinsk          #+#    #+#             */
-/*   Updated: 2023/11/09 21:40:54 by trosinsk         ###   ########.fr       */
+/*   Updated: 2024/06/24 20:31:48 by trosinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/ft_printf.h"
+#include "../include/ft_printf.h"
 
 char	*ft_strchr(const char *s, int c)
 {

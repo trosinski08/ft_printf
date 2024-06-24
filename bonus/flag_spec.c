@@ -6,7 +6,7 @@
 /*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 03:32:30 by trosinsk          #+#    #+#             */
-/*   Updated: 2024/06/24 00:19:17 by trosinsk         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:54:34 by trosinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	flag_spec(char fspec, t_format *flags)
 	{
 		flags->type = flags->type * 10 + (fspec - '0');
 		if (flags->dot == 0)
-			flags->width = flags->type;
+			flags->width = flags->width * 10 + (fspec - '0');
 		else
-			flags->prec = flags->type;
+			flags->prec = flags->prec * 10 + (fspec - '0');
 	}
 	if (fspec == '-')
 		flags->minus = 1;
