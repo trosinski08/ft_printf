@@ -6,13 +6,66 @@
 /*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 23:11:30 by trosinsk          #+#    #+#             */
-/*   Updated: 2024/06/24 17:26:02 by trosinsk         ###   ########.fr       */
+/*   Updated: 2024/06/24 22:28:38 by trosinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int	minus_nbr(long nbr, int base, t_format *f)
+/**
+ * @file digit_utils2.c
+ * @brief Utility functions for handling digits in ft_printf
+ */
+
+/**
+ * @brief Writes a minus sign to the standard output.
+ *
+ * This function writes a minus sign to the standard output and 
+ * updates the format flags accordingly.
+ *
+ * @param f A pointer to the format structure.
+ * @return The number of characters written, or -1 if an error occurred.
+ */
+
+/**
+ * @brief Writes a plus sign to the standard output.
+ *
+ * This function writes a plus sign to the standard output.
+ *
+ * @return The number of characters written, or -1 if an error occurred.
+ */
+
+/**
+ * @brief Writes a space character to the standard output.
+ *
+ * This function writes a space character to the standard output.
+ *
+ * @return The number of characters written, or -1 if an error occurred.
+ */
+
+/**
+ * @brief Prints a digit in the specified base.
+ *
+ * This function prints a digit in the specified base to the standard output.
+ *
+ * @param nbr The digit to be printed.
+ * @param base The base of the digit.
+ * @return The number of characters written, or -1 if an error occurred.
+ */
+
+/**
+ * @brief Calculates the length of a digit in the specified base.
+ *
+ * This function calculates the length of a digit in 
+ * the specified base, taking into account the format flags.
+ *
+ * @param nbr The digit whose length is to be calculated.
+ * @param base The base of the digit.
+ * @param f A pointer to the format structure.
+ * @return The length of the digit.
+ */
+
+int	minus_nbr(t_format *f)
 {
 	int	i;
 
@@ -25,7 +78,7 @@ int	minus_nbr(long nbr, int base, t_format *f)
 	return (i);
 }
 
-int	plus_conv(long nbr, int base, t_format *f)
+int	plus_conv(void)
 {
 	int	i;
 
@@ -36,7 +89,7 @@ int	plus_conv(long nbr, int base, t_format *f)
 	return (i);
 }
 
-int	space_conv(long nbr, int base, t_format *f)
+int	space_conv(void)
 {
 	int	i;
 

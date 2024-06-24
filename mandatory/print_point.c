@@ -6,13 +6,73 @@
 /*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 06:16:22 by trosinsk          #+#    #+#             */
-/*   Updated: 2024/06/24 00:50:08 by trosinsk         ###   ########.fr       */
+/*   Updated: 2024/06/24 22:23:57 by trosinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-static int	zero_conv(long nbr, int base, t_format *f, int len)
+/**
+ * @file print_point.c
+ * @brief Contains functions for printing a pointer value in hexadecimal format.
+ */
+
+/**
+ * @brief Converts the pointer value to a str with leading zeros if necessary.
+ * 
+ * This function calculates the number of leading zeros required 
+ * based on the width and precision specified in the format structure.
+ * It returns the number of characters written to the output.
+ * 
+ * @param nbr The pointer value to be converted.
+ * @param f The format structure containing width and precision information.
+ * @param len The length of the converted pointer value.
+ * @return The number of characters written to the output.
+ */
+// static int zero_conv(long nbr, t_format *f, int len);
+
+/**
+ * @brief Converts the pointer value to a str with leading spaces if necessary.
+ * 
+ * This function calculates the number of leading spaces required 
+ * based on the width specified in the format structure.
+ * It returns the number of characters written to the output.
+ * 
+ * @param nbr The pointer value to be converted.
+ * @param f The format structure containing width information.
+ * @param base The base of the conversion (usually 16 for hexadecimal).
+ * @return The number of characters written to the output.
+ */
+// static unsigned long minus_conv(unsigned long nbr, t_format *f, int base);
+
+/**
+ * @brief Prints the hexadecimal representation of a pointer value.
+ * 
+ * This function recursively converts the pointer value to a string 
+ * in the specified base (usually 16 for hexadecimal).
+ * It returns the number of characters written to the output.
+ * 
+ * @param nbr The pointer value to be converted.
+ * @param base The base of the conversion (usually 16 for hexadecimal).
+ * @param f The format structure containing width and precision information.
+ * @return The number of characters written to the output.
+ */
+// unsigned long print_h(unsigned long nbr, unsigned int base, t_format *f);
+
+/**
+ * @brief Prints a pointer value in hexadecimal format.
+ * 
+ * This function prints the "0x" prefix, the converted pointer value,
+ * and any necessary leading zeros or spaces based on the format structure.
+ * It returns the number of characters written to the output.
+ * 
+ * @param nbr The pointer value to be printed.
+ * @param base The base of the conversion (usually 16 for hexadecimal).
+ * @param f The format structure containing width and prec information.
+ * @return The number of characters written to the output.
+ */
+
+static int	zero_conv(long nbr, t_format *f, int len)
 {
 	int	c;
 	int	i;
@@ -52,8 +112,6 @@ static unsigned long	minus_conv(unsigned long nbr, t_format *f, int base)
 		i += write(1, " ", 1);
 	return (i);
 }
-	// if (nbr == -ULONG_MAX)
-	// 	c = 11; l32/33
 
 unsigned long	print_h(unsigned long nbr, unsigned int base, t_format *f)
 {
@@ -74,8 +132,6 @@ unsigned long	print_h(unsigned long nbr, unsigned int base, t_format *f)
 	return (i);
 }
 
-	// if (nbr == (unsigned long) NULL)
-	// 	return (i += write(1, "(nil)", 5), i);
 unsigned long	print_point(unsigned long nbr, unsigned int base, t_format *f)
 {
 	int		i;
@@ -88,7 +144,7 @@ unsigned long	print_point(unsigned long nbr, unsigned int base, t_format *f)
 	i += ft_putchar('0');
 	i += ft_putchar('x');
 	if (f ->width > len && f->minus == 0 && f->zero == 1)
-		i += zero_conv(nbr, base, f, len);
+		i += zero_conv(nbr, f, len);
 	i += print_h(nbr, base, f);
 	if (f->width > i && f->minus == 1)
 		i += (minus_conv(nbr, f, base));

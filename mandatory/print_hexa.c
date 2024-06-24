@@ -6,16 +6,45 @@
 /*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 20:23:17 by trosinsk          #+#    #+#             */
-/*   Updated: 2024/06/24 02:28:32 by trosinsk         ###   ########.fr       */
+/*   Updated: 2024/06/24 22:21:32 by trosinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-static int	min_conv(long nbr, t_format *f, int len, int i)
-{
-	int		c;
+/**
+ * @file print_hexa.c
+ * @brief Contains functions for printing hexadecimal numbers.
+ */
 
+/**
+ * @brief Helper function for handling non-minus conversions.
+ * @param f The format structure.
+ * @param i The current count of characters written.
+ * @return The updated count of characters written.
+ */
+// static int min_conv(t_format *f, int i);
+
+/**
+ * @brief Prints a hexadecimal number in lowercase.
+ * @param nbr The number to be printed.
+ * @param base The base of the number system.
+ * @param f The format structure.
+ * @return The count of characters written.
+ */
+// unsigned long print_hs(unsigned long nbr, unsigned int base, t_format *f);
+
+/**
+ * @brief Prints a hexadecimal number.
+ * @param nbr The number to be printed.
+ * @param base The base of the number system.
+ * @param f The format structure.
+ * @return The count of characters written.
+ */
+// unsigned long print_hexa(unsigned long nbr, unsigned int base, t_format *f);
+
+static int	min_conv(t_format *f, int i)
+{
 	f -> type = 0;
 	while (i < f->width)
 		i += write(1, " ", 1);
@@ -41,15 +70,6 @@ unsigned long	print_hs(unsigned long nbr, unsigned int base, t_format *f)
 	return (i);
 }
 
-static int	prec_min(int len, t_format *f, int *i)
-{
-	f->prec = -1;
-	while (*i < f->width - f->plus - f->space)
-		*i += write(1, " ", 1);
-	len = 0;
-	return (len);
-}
-
 unsigned long	print_hexa(unsigned long nbr, unsigned int base, t_format *f)
 {
 	int		i;
@@ -58,10 +78,10 @@ unsigned long	print_hexa(unsigned long nbr, unsigned int base, t_format *f)
 	i = 0;
 	len = ft_digit_len(nbr, base, f);
 	f->type = 'x';
-	i += non_minus_conv(nbr, f, len, base);
+	i += non_minus_conv(nbr, f, len);
 	if (f->prec >= 0)
 		i += print_hs(nbr, base, f);
 	if (f->minus == 1)
-		i = (min_conv(nbr, f, len, i));
+		i = (min_conv(f, i));
 	return (i);
 }
