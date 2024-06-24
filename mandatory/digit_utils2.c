@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_nbr_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tomek <tomek@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 23:11:30 by trosinsk          #+#    #+#             */
-/*   Updated: 2024/06/24 02:18:40 by trosinsk         ###   ########.fr       */
+/*   Updated: 2024/06/24 10:08:18 by tomek            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ int	ft_digit_len(long nbr, int base, t_format *f)
 	temp = nbr;
 	if ((f->plus == 1 || f->space == 1) && nbr >= 0)
 		i++;
-	// if (f->hash == 1 && nbr != 0)
-	// 	i += 2;
 	if (temp < 0)
 	{
 		temp *= -1;
@@ -91,4 +89,3 @@ int	ft_digit_len(long nbr, int base, t_format *f)
 	}
 	return (i);
 }
-

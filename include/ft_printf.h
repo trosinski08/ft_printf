@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tomek <tomek@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 00:22:01 by trosinsk          #+#    #+#             */
-/*   Updated: 2024/06/24 00:54:40 by trosinsk         ###   ########.fr       */
+/*   Updated: 2024/06/24 10:50:16 by tomek            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,12 @@ int				minus_nbr(long nbr, int base, t_format *f);
 int				plus_conv(long nbr, int base, t_format *f);
 int				non_minus_conv(long nbr, t_format *f, int len, int base);
 // int				zero_conv(long nbr, int base, t_format *f, int len);
-int				prec_conv(long nbr, int base, t_format *f, int len);
+// int				prec_conv(long nbr, int base, t_format *f, int len);
 int				space_conv(long nbr, int base, t_format *f);
+int				zero_printer(int zero_len);
+int				flag_checker(int nbr, int base, t_format *f);
+int				space_len_clac(t_format *f, int len, int zero_len, int nbr);
+int				zero_len_clac(t_format *f, int len, int nbr);
+int				hash_conv(int nbr, t_format *f);
 
 #endif
