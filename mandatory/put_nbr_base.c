@@ -6,7 +6,7 @@
 /*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 23:11:30 by trosinsk          #+#    #+#             */
-/*   Updated: 2024/06/13 01:10:16 by trosinsk         ###   ########.fr       */
+/*   Updated: 2024/06/24 02:18:40 by trosinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,17 @@ int	plus_conv(long nbr, int base, t_format *f)
 
 	i = 0;
 	i += write(1, "+", 1);
+	if (i == -1)
+		return (-1);
+	return (i);
+}
+
+int	space_conv(long nbr, int base, t_format *f)
+{
+	int	i;
+
+	i = 0;
+	i += write(1, " ", 1);
 	if (i == -1)
 		return (-1);
 	return (i);
@@ -64,8 +75,10 @@ int	ft_digit_len(long nbr, int base, t_format *f)
 
 	i = 1;
 	temp = nbr;
-	if (f->plus == 1 && nbr >= 0)
+	if ((f->plus == 1 || f->space == 1) && nbr >= 0)
 		i++;
+	// if (f->hash == 1 && nbr != 0)
+	// 	i += 2;
 	if (temp < 0)
 	{
 		temp *= -1;
@@ -79,20 +92,3 @@ int	ft_digit_len(long nbr, int base, t_format *f)
 	return (i);
 }
 
-int	prec_conv(long nbr, int base, t_format *f, int len)
-{
-	int	c;
-	int	i;
-
-	i = 0;
-	if (nbr < 0)
-		len--;
-	if (f->plus == 1)
-		len--;
-	c = f ->prec - len;
-	f->prec = 0;
-	f -> type = 0;
-	while (i < c)
-		i += write(1, "0", 1);
-	return (i);
-}

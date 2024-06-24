@@ -6,11 +6,31 @@
 /*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 06:16:22 by trosinsk          #+#    #+#             */
-/*   Updated: 2024/06/12 02:34:29 by trosinsk         ###   ########.fr       */
+/*   Updated: 2024/06/24 00:50:08 by trosinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+
+static int	zero_conv(long nbr, int base, t_format *f, int len)
+{
+	int	c;
+	int	i;
+
+	i = 0;
+	if (f->width > f->prec)
+		c = f->width - f ->prec - len;
+	else
+	{
+		if (nbr < 0)
+			len--;
+		c = f->prec - len;
+	}
+	f -> type = 0;
+	while (i < c)
+		i += write(1, "0", 1);
+	return (i);
+}
 
 static unsigned long	minus_conv(unsigned long nbr, t_format *f, int base)
 {
