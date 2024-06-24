@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_digit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tomek <tomek@student.42.fr>                +#+  +:+       +#+        */
+/*   By: trosinsk <trosinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 02:00:45 by trosinsk          #+#    #+#             */
-/*   Updated: 2024/06/24 10:50:41 by tomek            ###   ########.fr       */
+/*   Updated: 2024/06/24 02:09:40 by trosinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,79 @@ static int	prec_min(int len, t_format *f, int i)
 	return (i);
 }
 
+static int	min_conv(long nbr, t_format *f, int len, int i)
+{
+	int		c;
+
+	f -> type = 0;
+	while (i < f->width)
+		i += write(1, " ", 1);
+	return (i);
+}
+
+
 int	non_minus_conv(long nbr, t_format *f, int len, int base)
 {
 	int		i;
 	int		zero_len;
 	int		space_len;
+	int		count;
 	char	c;
 
 	i = 0;
+	count = 0;
+	zero_len = 0;
+	space_len = 0;
 	c = ' ';
 	if (f->zero == 1 && f->minus == 0 && f->prec <= 0 && !f->dot)
 		c = '0';
 	if (f->prec == 0 && nbr == 0 && f->dot == 1)
 		i += prec_min(len, f, i);
-	zero_len = zero_len_clac(f, len, nbr);
-	space_len = space_len_clac(f, len, zero_len, nbr);
-	if (c == '0')
-		i += flag_checker(nbr, base, f);
+	if (f->prec >= len)
+	{
+		if (nbr < 0 || f->plus == 1 || f->space == 1)
+			zero_len = f->prec - len + 1;
+		else
+			zero_len = f->prec - len;
+	}
+	if (f->width > len && f->width > f->prec && f->minus == 0)
+		space_len = f->width - len - zero_len;
+	if (nbr < 0 && c == '0')
+	{
+		i += minus_nbr(nbr, base, f);
+		space_len++;
+	}
+	else if ((f ->plus == 1 && nbr >= 0) && c == '0')
+	{
+		i += plus_conv(nbr, base, f);
+		space_len++;
+	}
+	else if ((f ->space == 1 && nbr >= 0 && f->minus == 0) && c == '0')
+	{
+		i += space_conv(nbr, base, f);
+		space_len++;
+	}
 	while (i < space_len)
 		i += write(1, &c, 1);
 	if (f->hash == 1 && nbr != 0)
-		i += hash_conv(nbr, f);
-	if (c != '0')
-		i += flag_checker(nbr, base, f);
-	if (zero_len > 0)
-		i += zero_printer(zero_len);
+	{
+		if (f->type == 'X')
+			i += write(1, "0X", 2);
+		else if (f->type == 'x')
+			i += write(1, "0x", 2);
+		f->hash = 0;
+	}
+	if (nbr < 0 && c != '0')
+		i += minus_nbr(nbr, base, f);
+	else if (((f ->plus == 1 && nbr >= 0) && c != '0'))
+		i += plus_conv(nbr, base, f);
+	else if (f ->space == 1 && nbr >= 0  && c != '0')
+		i += space_conv(nbr, base, f);
+	while (count < zero_len)
+	{
+		i += write(1, "0", 1);
+		count++;
+	}
 	return (i);
 }
 
@@ -69,7 +117,6 @@ int	print_digit_prep(long nbr, int base, t_format *f)
 	if (f->prec >= 0)
 		i += print_digit(nbr, base);
 	if (f->minus == 1)
-		while (i < f->width)
-			i += write(1, " ", 1);
+		i = min_conv(nbr, f, len, i);
 	return (i);
 }
